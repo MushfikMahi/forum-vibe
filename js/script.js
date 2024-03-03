@@ -5,7 +5,7 @@ const loadNews = async (id) =>{
     displayNews(news)
 }
 
-const displayNews = (allNews) =>{
+const displayNews = (allNews) =>{    
     const newsContainer = document.getElementById('news-container')
     newsContainer.textContent = '';
     allNews.forEach(item => {
@@ -47,9 +47,11 @@ const displayNews = (allNews) =>{
         `
         newsContainer.appendChild(newDiv)
     });
+    handleTogle(false)
 }
 
 const handleSearch = () =>{
+    handleTogle(true)
     const value = document.getElementById('search-box').value;
     loadNews(value)
 }
@@ -111,7 +113,16 @@ const displayPost = (posts) =>{
 
 
 
-
+const handleTogle = (isLoading) =>{
+    const spinner = document.getElementById('spinner')
+    if(isLoading){
+        console.log(isLoading)
+        spinner.classList.remove('hidden')
+        setTimeout(() => {
+            spinner.classList.add('hidden');
+        }, 2000);
+    }
+}
 
 
 
