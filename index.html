@@ -26,21 +26,21 @@
               src="images/Frame 4.png" alt=""></a>
           <a title="report" class="cursor-pointer border p-3 hover:bg-gray-100 bg-gray-50 rounded-full"><img
               src="images/Frame 5.png" alt=""></a>
-          <button class="btn bg-blue-500 text-white rounded-full px-5">Sign In</button>
+          <button class="btn bg-[#797DFC] text-white rounded-full px-5">Sign In</button>
         </ul>
       </div>
     </div>
     <!-- banner -->
     <div class="hero rounded-2xl" style="background-image: url(images/bgbanner.png);">
-      <div class="hero-overlay bg-opacity-50 bg-[#12132D] rounded-2xl"></div>
+      <div class="hero-overlay bg-opacity-100 bg-[#12132D] rounded-2xl"></div>
       <div class="w-11/12 p-10">
         <div class="flex gap-10">
           <div class="flex-1 space-y-5">
-            <h1 class="font-extrabold text-3xl">Welcome to the <br> <span>ReTro</span> Forum</h1>
-            <p>Share your favorite opinion and win and wp forum coffee mug!</p>
+            <h1 class="font-extrabold text-3xl text-white">Welcome to the <br> <span class="bg-clip-text text-transparent bg-gradient-to-r from-[#797DFC] to-slate-800">ReTro</span> Forum</h1>
+            <p class="text-white">Share your favorite opinion and win and wp forum coffee mug!</p>
             <label class="input input-bordered flex items-center rounded-full">
               <input id="search-box" type="text" class="grow" placeholder="Search" />
-              <button onclick="handleSearch()" class="badge badge-info p-3">Search</button>
+              <button onclick="handleSearch()" class="badge badge-info p-3 text-white bg-[#797DFC]">Search</button>
             </label>
           </div>
           <div class="w-5/12 bg-white p-10 rounded-3xl space-y-3">
@@ -111,12 +111,12 @@
         </div>
         <!-- chack list -->
         <div class="col-span-1">
-          <div id="chack-list" class="bg-gray-100 shadow-xl rounded-2xl space-y-3 p-5">
+          <div id="chack-list" class="bg-gray-100 rounded-2xl space-y-3 p-5">
             <div class="flex justify-between items-center">
               <h3 class="font-bold text-xl">Title</h3>
               <div class="flex gap-3">
                 <img src="images/tick.png" alt="">
-                <p>Mark as read</p>
+                <p>Mark as read (<span id="read-count"> 0 </span>) </p>
               </div>
             </div>
             <!-- <div class="bg-white p-5 rounded-3xl shadow-xl">10 Kids Unaware of Their Costume 1568</div>

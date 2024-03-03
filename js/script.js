@@ -10,36 +10,38 @@ const displayNews = (allNews) =>{
     newsContainer.textContent = '';
     allNews.forEach(item => {
         const newDiv = document.createElement('div')
-        newDiv.className = 'flex gap-5 p-5 bg-base-100 rounded-xl shadow-xl'
+        newDiv.className = 'flex gap-5 p-5 bg-gray-50 rounded-xl border hover:bg-purple-50'
         newDiv.innerHTML = `
         <div class="relative">
             <img class="w-40 rounded-2xl" src="${item.image}" alt="Movie"/>
             <div class="${item.isActive? 'bg-green-500 h-3 w-3 rounded-full absolute -top-1 -right-1': 'bg-red-500 h-3 w-3 rounded-full absolute -top-1 -right-1'}"></div>
         </div>
         <div class="space-y-3 w-full">
-            <div class="flex gap-5">
-                <p># ${item.category}</p>
-                <p>Auhtor: ${item.author.name}</p>
-            </div>
-            <h2 class="card-title">${item.title}</h2>
-            <p>${item.description}</p>
-            <hr class="border-dashed">
+                <div class="flex gap-5">
+                    <p># ${item.category}</p>
+                    <p>Auhtor: ${item.author.name}</p>
+                </div>
+                <h2 class="card-title">${item.title}</h2>
+                <p>${item.description}</p>
+                <hr class="border-dashed">
             <div class="flex justify-between">
-            <div class="flex items-center gap-3">
-                <img src="images/massage.png" alt="">
-                <p>${item.comment_count}</p>
-            </div>
-            <div class="flex items-center gap-3">
-                <img src="images/eye.png" alt="">
-                <p>${item.view_count}</p>
-            </div>
-            <div class="flex items-center gap-3">
-                <img src="images/clock.png" alt="">
-                <p>${item.posted_time}</p>
-            </div>
-            <div onclick="handleReadingList('${escape(item.title)}', '${item.view_count}')" class="cursor-pointer">
-                <img src="images/msg box.png" alt="">
-            </div>
+                <div class="flex gap-5">
+                    <div class="flex items-center gap-3">
+                        <img src="images/massage.png" alt="">
+                        <p>${item.comment_count}</p>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <img src="images/eye.png" alt="">
+                        <p>${item.view_count}</p>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <img src="images/clock.png" alt="">
+                        <p>${item.posted_time}</p>
+                    </div>
+                </div>
+                <div onclick="handleReadingList('${escape(item.title)}', '${item.view_count}')" class="cursor-pointer">
+                    <img src="images/msg box.png" alt="">
+                </div>
             </div>
         </div>
         `
@@ -52,10 +54,14 @@ const handleSearch = () =>{
     loadNews(value)
 }
 
+let count = 0;
 const handleReadingList = (title , viewCount) =>{
+    count++
+    document.getElementById('read-count').innerText = count
+    console.log(count)
     const chacklist = document.getElementById('chack-list')
     const newDiv = document.createElement('div')
-    newDiv.className = 'bg-white p-5 rounded-3xl shadow-xl flex justify-between';
+    newDiv.className = 'bg-white p-5 rounded-xl shadow-xl flex justify-between';
     newDiv.innerHTML = `
     <h3 class="font-bold">${unescape(title)}</h3>
     <div class="flex items-center gap-1">
@@ -83,7 +89,7 @@ const displayPost = (posts) =>{
         <figure><img class="p-4 rounded-3xl" src="${item.cover_image}" alt="posts" /></figure>
           <div class="px-5 flex items-center gap-3">
             <img src="images/calender.png" alt="">
-            <p>${item.author.posted_date}</p>
+            <p>${item.author.posted_date? item.author.posted_date: 'No publish date' }</p>
           </div>
           <div class="card-body">
             <h2 class="card-title">What will a mars habitat force that impact in our daily life!!!</h2>
@@ -95,7 +101,7 @@ const displayPost = (posts) =>{
             </div>
             <div class="">
               <p class="font-bold">${item.author.name}</p>
-              <p>${item.author.designation}</p>
+              <p>${item.author.designation? item.author.designation: 'Unknown'}</p>
             </div>
           </div>
         `
